@@ -1,8 +1,8 @@
 ignore.py
 ---------
 
-Get gitignore templates from the [github/gitignore][1] repo. It supports viewing
-and downloading templates. It uses the github API.
+Get gitignore templates from the [github/gitignore][1] repository.
+It supports listing and downloading available templates using the github API.
 
 dependencies
 ------------
@@ -23,12 +23,12 @@ Get vim, python and c .gitignore templates and print on `STDOUT`:
     $ ignore.py get vim python c
 
 You can use a shell redirect to write the output in a .gitignore file or use the
-`--output-files` and `--merge` arguments.
+`--output-files` and `--merge` options:
 
     $ ignore.py get -o -m vim python c
 
 If a .gitignore file already exists you will be prompted to overwrite it unless
-you use the `--force` option. For more info use `ignore.py -h`.
+you use the `--force` option. For more information see `ignore.py -h`.
 
 license
 -------
