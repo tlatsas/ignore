@@ -7,7 +7,7 @@ import argparse
 from base64 import b64decode
 
 _REPO = "https://api.github.com/repos/github/gitignore"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 def cmd_parse():
     """parse command line arguments"""
@@ -89,7 +89,7 @@ def save_gitignore(ignore_dict, force=False):
                 continue
 
         with open(filename, 'w') as f:
-            f.write(b64decode(data).decode("UTF-8"))
+            f.write(data)
 
 
 if __name__ == "__main__":
@@ -112,8 +112,8 @@ if __name__ == "__main__":
         contents = {}
         for tpl in requested_templates:
             if tpl in templates:
-                contents[templates[tpl]["filename"]] = get_template_contents(
-                    templates[tpl]["url"])
+                contents[templates[tpl]["filename"]] = b64decode(
+                    get_template_contents(templates[tpl]["url"])).decode("UTF-8")
 
         # we output the contents on separate files or in a unified .gitignore file
         if args.output_files:
@@ -126,5 +126,5 @@ if __name__ == "__main__":
         else:
             # print each template in STDOUT
             for tpl_value in contents.values():
-                print(b64decode(tpl_value).decode("UTF-8"))
+                print(tpl_value)
 
