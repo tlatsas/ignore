@@ -18,7 +18,7 @@ def cmd_parse():
     parser.add_argument("-v", "--version", action="version",
         version="%(prog)s {0}".format(__version__))
 
-    subparsers = parser.add_subparsers(help="sub-command help", dest="command")
+    subparsers = parser.add_subparsers(help="available commands", dest="command")
     lister = subparsers.add_parser("list", help="List remote templates")
     getter = subparsers.add_parser("get", help="Get remote templates")
 
