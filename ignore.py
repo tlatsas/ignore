@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import requests
 import argparse
 from base64 import b64decode
@@ -92,6 +93,9 @@ def save_gitignore(ignore_dict, force=False):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        sys.argv.append('get')
+
     args = cmd_parse()
     templates = get_templates()
 
